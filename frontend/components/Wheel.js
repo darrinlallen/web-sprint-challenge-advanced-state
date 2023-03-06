@@ -1,8 +1,9 @@
 import React from 'react'
 import {useState} from 'react'
-
+let initial =0
 export default function Wheel(props) {
-  const [index, setindex] = useState(0)
+  const [index, setindex] = useState(initial)
+  
   let num =index
   function clock (){
    
@@ -47,7 +48,7 @@ export default function Wheel(props) {
       { 
         [0, 1, 2, 3, 4, 5].map((idx) => (
         
-          <><div className="cog" style={{ "--i": idx }}></div><div key={idx} style={{ "--i": num }} className={`cog active${idx === num ? 'cog active' : ''}`}>B</div></>
+          <><div key={idx} style={{ "--i": idx }} className={`${idx === num ? 'cog active' : 'cog'}`}>{`${idx === num ? 'B' : ''}`}</div></>
           
             
           ))
