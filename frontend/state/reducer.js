@@ -6,7 +6,7 @@ function wheel(state = initialWheelState, action) {
   return state
 }
 
-const initialQuizState = null
+const initialQuizState = ''
 function quiz(state = initialQuizState, action) {
   return state
 }
@@ -27,7 +27,6 @@ const initialFormState = {
   newFalseAnswer: '',
 }
 function form(state = initialFormState, action) {
-  return state
-}
+  return state}
 
 export default combineReducers({ wheel, quiz, selectedAnswer, infoMessage, form })
