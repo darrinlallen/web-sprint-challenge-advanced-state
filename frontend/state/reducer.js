@@ -6,7 +6,7 @@ function wheel(state = initialWheelState, action) {
   return state
 }
 
-const initialQuizState = ''
+export const initialQuizState = ''
 function quiz(state = initialQuizState, action) {
   return state
 }

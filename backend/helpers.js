@@ -127,6 +127,7 @@ async function postQuiz(payload) {
 }
 
 module.exports = {
+  quizzes,
   getNextQuiz,
   postQuiz,
   postAnswer,

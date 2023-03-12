@@ -17,13 +17,19 @@ let f =''
 function handleq(e) {
    setnewQuestion(e.target.value)
   console.log(disabled)
-  
+  if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0  ){
+    setdisabled(false) 
+    q = false
+  }
 
   }
   function handlet(e) {
     setnewTrueAnswer(e.target.value)
     console.log(disabled)
-    
+    if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0  ){
+      setdisabled(false) 
+      q = false
+    }
 
   
     }
@@ -31,7 +37,7 @@ function handleq(e) {
       setnewFalseAnswer(e.target.value)
       if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0  ){
         setdisabled(false) 
-        q = "false"
+        q = false
       }
         
         }  
@@ -43,7 +49,7 @@ function handleq(e) {
       <h2>Create New Quiz</h2>
       <input maxLength={50} onChange={handleq} id="newQuestion" placeholder="Enter question"/>
       <input maxLength={50} onChange={handlet} id="newTrueAnswer" placeholder="Enter true answer"  />
-      <input maxLength={50} onChange={handlef} id="newFalseAnswer" placeholder="Enter false answer"  />
+      <input maxLength={50} onChange ={handlef} id="newFalseAnswer" placeholder="Enter false answer"  />
       <button disabled = {q} id="submitNewQuizBtn" >Submit new quiz</button>
     </form>
   )

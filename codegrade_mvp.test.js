@@ -149,7 +149,7 @@ describe('Advanced State Sprint Challenge Submission', () => {
       let answerB = screen.queryByText(AnElephant, queryOptions)
       fireEvent.click(answerA.querySelector('button'))
       expect(answerA.textContent).toMatch(/SELECTED/)
-      expect(answerB.textContent).not.toMatch(/SELECTED/)
+     expect(answerB.textContent).not.toMatch(/SELECTED/)
       fireEvent.click(answerB.querySelector('button'))
       expect(answerA.textContent).not.toMatch(/SELECTED/)
       expect(answerB.textContent).toMatch(/SELECTED/)

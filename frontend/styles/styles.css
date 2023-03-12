@@ -19,7 +19,7 @@ body::after {
   z-index: -1;
 }
 
-body, input, button {
+body, input {
   font-family: 'Titillium Web', sans-serif;
   color: #484848;
 }
