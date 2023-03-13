@@ -5,12 +5,17 @@ import * as actionCreators from '../state/action-creators'
 import  reducer , {initialQuizState } from '../state/reducer'
 import helpers from '../../backend/helpers'
 import { quizzes } from '../../backend/helpers'
+import axios from 'axios'
+
 let answer = ''
 let foo =''
 let bar = ''
 let choiceme1 = 'Select'
 let c1 
-let c2 
+let c2
+let neworder = ""
+let id  = '' 
+let ansid =''
 let choiceme2 = 'Select'
  function Quiz(props) {
   const [state, dispatch] =useReducer(reducer, initialQuizState)
@@ -43,7 +48,39 @@ let choiceme2 = 'Select'
     setselectme1('answer')
     }
   
+    const getId = () => {
+      const chars = 'abcdefghijklmnopqrstuvwxyz'
+      let result = ''
+      for (let i = 0; i < 5; i++) {
+        result += chars[Math.floor(Math.random() * 26)]
+      }
+      return result
+    }
+function submit () {
 
+  const chars = 'abcdefghijklmnopqrstuvwxyz'
+  let result = ''
+  for (let i = 0; i < 5; i++) {
+    result += chars[Math.floor(Math.random() * 26)]
+  }
+  id = result
+  if (c1 = true){
+  ansid = quizzes[0].answers[0].answer_id}
+  else {
+    ansid = quizzes[0].answers[1].answer_id
+    
+  }
+  neworder = {"quiz_id": id, "answer_id":ansid  }
+  axios.post('http://localhost:9000/api/quiz/answer', neworder)   
+  .then(res => {
+  
+  
+})
+  .catch(err => {
+    
+  })
+    
+}
   
   return (
     <div id="wrapper">
@@ -69,7 +106,7 @@ let choiceme2 = 'Select'
               </div>
             </div>
             
-            <button disabled = {disabled} id="submitAnswerBtn">Submit answer</button>
+            <button onClick={submit} disabled = {disabled} id="submitAnswerBtn">Submit answer</button>
           </>
         ) : 'Loading next quiz...'
       }

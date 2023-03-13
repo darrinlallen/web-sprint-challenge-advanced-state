@@ -16,8 +16,10 @@ export function selectAnswer() {return{
   type: SET_SELECTED_ANSWER
 } }
 
-export function setMessage() {return {
-  type: SET_INFO_MESSAGE
+export function setMessage(mess) {return {
+  type: SET_INFO_MESSAGE,
+  payload: mess
+
 } }
 
 export function setQuiz() {return {
@@ -53,6 +55,7 @@ export function postQuiz() {
     // On successful POST:
     // - Dispatch the correct message to the the appropriate state
     // - Dispatch the resetting of the form
+    actionCreators.setMessage(`Congrats: "${newQuestion}" is a great question!`)
   }
 }
 // ❗ On promise rejections, use log statements or breakpoints, and put an appropriate error message in state

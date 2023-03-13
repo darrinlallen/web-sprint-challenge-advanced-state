@@ -20,7 +20,7 @@ server.get('/api/quiz/next', async (req, res, next) => {
   }
 })
 
-server.post('/api/quiz/answer', async (req, res, next) => {
+server.post('api/quiz/answer ', async (req, res, next) => {
   try {
     const [status, payload] = await postAnswer(req.body)
     res.status(status).json(payload)

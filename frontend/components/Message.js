@@ -1,5 +1,7 @@
 import React from 'react'
-
+import { setMessage } from '../state/action-creators'
+import {Form} from './Form'
 export default function Message(props) {
-  return <div id="message">Nice job!</div>
+  const {mess} = props
+  return <div id="message">{mess}</div>
 }

@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import * as actionCreators from '../state/action-creators'
+import axios from 'axios'
+import setMessage from './Message'
+import { useReducer } from 'react'
+import reducer from '../state/reducer'
 let t= true
 let q = true
 let f = true
 let go = true
 export function Form(props) {
-  const {state} = props 
    const [disabled, setdisabled] = useState(true)
 const[newQuestion, setnewQuestion] = useState('')
 const [newTrueAnswer, setnewTrueAnswer] = useState('')
 const [newFalseAnswer, setnewFalseAnswer] = useState('')
+const [state, dispatch] = useReducer(reducer)
 let q = true
 let t= ''
 let f =''
+let neworder =''
 function handleq(e) {
    setnewQuestion(e.target.value)
   console.log(disabled)
@@ -42,7 +47,20 @@ function handleq(e) {
         
         }  
   function onSubmit (evt)  {
-
+    evt.preventDefault();
+    neworder = {"question_text": newQuestion, "true_answer_text":newTrueAnswer, "false_answer_text": newFalseAnswer   }
+    axios.post('http://localhost:9000/api/quiz/new', neworder)   
+    .then(res => {
+    
+    
+  })
+    .catch(err => {
+      
+    })
+  setnewQuestion('')
+  setnewFalseAnswer('')
+  setnewTrueAnswer('')
+dispatch(setMessage(`Congrats: "${newQuestion}" is a great question!`)) 
   }
   return (
     <form id="form" onSubmit={onSubmit}>
@@ -50,9 +68,9 @@ function handleq(e) {
       <input maxLength={50} onChange={handleq} id="newQuestion" placeholder="Enter question"/>
       <input maxLength={50} onChange={handlet} id="newTrueAnswer" placeholder="Enter true answer"  />
       <input maxLength={50} onChange ={handlef} id="newFalseAnswer" placeholder="Enter false answer"  />
-      <button disabled = {q} id="submitNewQuizBtn" >Submit new quiz</button>
+      <button disabled = {disabled} id="submitNewQuizBtn" >Submit new quiz</button>
     </form>
   )
 }
 
-export default connect(st => st, actionCreators)(Form)
+export default connect(state => state, actionCreators)(Form)
