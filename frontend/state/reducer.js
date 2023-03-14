@@ -20,7 +20,7 @@ function selectedAnswer(state = initialSelectedAnswerState, action) {
 const initialMessageState = ''
 function infoMessage(state = initialMessageState, action) {
         return(
-          state
+        state
         )
       }
     

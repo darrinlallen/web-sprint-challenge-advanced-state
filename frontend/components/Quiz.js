@@ -16,8 +16,13 @@ let c2
 let neworder = ""
 let id  = '' 
 let ansid =''
+let i =0;
 let choiceme2 = 'Select'
  function Quiz(props) {
+  const [i, seti] = useState(1)
+  const [question, setquestion] = useState(quizzes[0].question)
+  const [ans1, setans1] = useState(quizzes[0].answers[0].text)
+  const [ans3, setans3] = useState(quizzes[0].answers[1].text)
   const [state, dispatch] =useReducer(reducer, initialQuizState)
   const [selectme1, setselectme1] = useState('answer')
   const [selectme2, setselectme2] = useState('answer')
@@ -79,27 +84,35 @@ function submit () {
   .catch(err => {
     
   })
-    
-}
-  
+  setchoice1('Select')
+  setchoice2('Select')
+  setchoice3('Select')
+  setchoice4('Select')
+  c1 = false
+  c2= false
+  seti(i+1)
+    setquestion(quizzes[i].question)
+    setans1(quizzes[i].answers[0].text)
+    setans3(quizzes[i].answers[1].text)
+    }
   return (
     <div id="wrapper">
       {
         // quiz already in state? Let's use that, otherwise render "Loading next quiz..."
         true ? (
           <>
-            <h2>What is a closure?</h2>
+            <h2>{question}</h2>
              
             <div id="quizAnswers">
             <div className={`answer${quizzes[0].answers[0].correct === c1 ? ' selected': ''}`}>
-            {quizzes[0].answers[0].text}
+            {ans1}
                 <button onClick={select1}>
                   {quizzes[0].answers[0].correct === c1 ? 'SELECTED': 'Select'}
                 </button>
               </div>
                 
               <div className={`answer${quizzes[0].answers[0].correct === c2 ? ' selected' : ''}`}>
-              {quizzes[0].answers[1].text}
+              {ans3}
                 <button onClick={select2}>
                   {quizzes[0].answers[0].correct === c2 ? 'SELECTED' : 'Select'}
                 </button>

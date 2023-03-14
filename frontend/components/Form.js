@@ -65,10 +65,10 @@ dispatch(setMessage(`Congrats: "${newQuestion}" is a great question!`))
   return (
     <form id="form" onSubmit={onSubmit}>
       <h2>Create New Quiz</h2>
-      <input maxLength={50} onChange={handleq} id="newQuestion" placeholder="Enter question"/>
-      <input maxLength={50} onChange={handlet} id="newTrueAnswer" placeholder="Enter true answer"  />
-      <input maxLength={50} onChange ={handlef} id="newFalseAnswer" placeholder="Enter false answer"  />
-      <button disabled = {disabled} id="submitNewQuizBtn" >Submit new quiz</button>
+      <input maxLength={50} onChange={handleq} id="newQuestion" placeholder="Enter question" value={newQuestion}/>
+      <input maxLength={50} onChange={handlet} id="newTrueAnswer" placeholder="Enter true answer" value={newTrueAnswer}/>
+      <input maxLength={50} onChange ={handlef} id="newFalseAnswer" placeholder="Enter false answer"  value={newFalseAnswer}/>
+      <button onSubmit={onSubmit} disabled = {disabled} id="submitNewQuizBtn" >Submit new quiz</button>
     </form>
   )
 }
