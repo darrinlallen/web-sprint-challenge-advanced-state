@@ -1,4 +1,3 @@
-// ❗ You don't need to add extra reducers to achieve MVP
 import { combineReducers } from 'redux'
 import { SET_INFO_MESSAGE } from './action-types'
 
@@ -17,21 +16,30 @@ function selectedAnswer(state = initialSelectedAnswerState, action) {
   return state
 }
 
-const initialMessageState = ''
-function infoMessage(state = initialMessageState, action) {
-        return(
-        state
-        )
-      }
-    
-
-
-const initialFormState = {
-  newQuestion: '',
-  newTrueAnswer: '',
-  newFalseAnswer: '',
+export const initialMessageState = {message: 'jjjjj'}
+      
+export const infoMessage = (state = initialMessageState, action) => {
+  console.log(action.payload)
+  console.log((action.type))
+  console.log(state)
+  if (action.type == 'SET_INFO_MESSAGE'){
+  return ({
+...state,
+ message: action.payload
+  })
 }
-function form(state = initialFormState, action) {
-  return state}
+  else {
+    return state
+  }
+}
+  const initialFormState = {
+    newQuestion: '',
+    newTrueAnswer: '',
+    newFalseAnswer: '',
+  }
+  function form(state = initialFormState, action) {
+    return state}
 
-export default combineReducers({ wheel, quiz, selectedAnswer, infoMessage, form })
+  
+  export default combineReducers({ wheel, quiz, selectedAnswer, infoMessage, form })
+  

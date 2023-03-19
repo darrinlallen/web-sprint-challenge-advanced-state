@@ -7,15 +7,16 @@ import Wheel from './Wheel'
 import Quiz from './Quiz'
 import Message from './Message'
 import Form from './Form'
+import { createStore } from 'redux';
 
 // REDUX IMPORTS
-import { createStore, applyMiddleware, compose } from 'redux'
+import {  applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
-import reducer from '../state/reducer'
+import  reducer from '../state/reducer'
 
 // REDUX STORE
-let store
+export let store
 export const resetStore = () => {
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
   store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)))

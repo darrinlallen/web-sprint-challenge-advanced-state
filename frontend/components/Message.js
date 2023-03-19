@@ -1,7 +1,22 @@
 import React from 'react'
 import { setMessage } from '../state/action-creators'
-import {Form} from './Form'
-export default function Message(props) {
-  const {mess} = props
-  return <div id="message">{mess}</div>
-}
+import { connect } from 'react-redux'
+import * as actionCreators from '../state/action-creators'
+import infoMessage, { initialMessageState }  from '../state/reducer'
+import { useReducer } from 'react'
+import { SET_INFO_MESSAGE } from '../state/action-types'
+import reducer from '../state/reducer'
+
+ function Message(props) {
+  const [state, dispatch] = useReducer(reducer, initialMessageState)
+
+console.log(props.message)
+  return <div id="message">{props.message}</div> }
+
+  const mapStateToProps = (state) =>{
+    return {
+    message: state.infoMessage.message
+    }
+  }
+
+export default connect(mapStateToProps, {})(Message)

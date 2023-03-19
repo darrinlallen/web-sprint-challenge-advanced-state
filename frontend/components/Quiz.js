@@ -2,7 +2,6 @@ import { useReducer, useState } from 'react'
 import React from 'react'
 import {connect} from 'react-redux'
 import * as actionCreators from '../state/action-creators'
-import  reducer , {initialQuizState } from '../state/reducer'
 import helpers from '../../backend/helpers'
 import { quizzes } from '../../backend/helpers'
 import axios from 'axios'
@@ -23,7 +22,6 @@ let choiceme2 = 'Select'
   const [question, setquestion] = useState(quizzes[0].question)
   const [ans1, setans1] = useState(quizzes[0].answers[0].text)
   const [ans3, setans3] = useState(quizzes[0].answers[1].text)
-  const [state, dispatch] =useReducer(reducer, initialQuizState)
   const [selectme1, setselectme1] = useState('answer')
   const [selectme2, setselectme2] = useState('answer')
   const [choice1, setchoice1] = useState('Select')
@@ -31,7 +29,6 @@ let choiceme2 = 'Select'
   const [choice3, setchoice3] = useState('Select')
   const [choice4, setchoice4] = useState('Select')
   const[disabled, setdisabled] = useState(true)
- console.log(state)
 
 
   function select1(){
