@@ -1,11 +1,21 @@
 import { combineReducers } from 'redux'
-import { SET_INFO_MESSAGE } from './action-types'
+import { MOVE_CLOCKWISE, SET_INFO_MESSAGE } from './action-types'
 
-const initialWheelState = {
-  wheelie: 0}
-function wheel(state = initialWheelState, action) {
-  return state
-}
+export const initialWheelState =  0
+function Wheelie(state = initialWheelState, action) {
+console.log(action.type)
+console.log(action.payload)
+  if (action.type == 'MOVE_CLOCKWISE'){
+    return ({
+  ...state,
+   index: action.payload
+    })
+  }
+    else {
+      return state
+    }
+  }
+
 
 export const initialQuizState = ''
 function quiz(state = initialQuizState, action) {
@@ -42,5 +52,5 @@ export const infoMessage = (state = initialMessageState, action) => {
     return state}
 
   
-  export default combineReducers({ wheel, quiz, selectedAnswer, infoMessage, form })
+  export default combineReducers({ Wheelie, quiz, selectedAnswer, infoMessage, form })
   

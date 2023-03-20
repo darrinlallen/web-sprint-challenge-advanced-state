@@ -30,32 +30,45 @@ let f =''
 let neworder =''
 
 function handleq(e) {
+  setdisabled(true)
    setnewQuestion(e.target.value)
   console.log(disabled)
-  if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0 ){
+  if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0 && newFalseAnswer.trim().length>0){
     setdisabled(false) 
     q = false
   }
+  if (newQuestion.trim().length ==0){
+    setdisabled(true)
+  }
+
+
 
   }
   function handlet(e) {
+    setdisabled(true)
     setnewTrueAnswer(e.target.value)
     console.log(disabled)
-    if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0  ){
+    
+    if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0 ){
       setdisabled(false) 
       q = false
     }
-
+    if (newQuestion.trim().length ==0){
+      setdisabled(true)
+    }
+  
   
     }
     function handlef(e) {
+      setdisabled(true)
       setnewFalseAnswer(e.target.value)
     
       if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0  ){
     
         setdisabled(false) 
         q = false}
-        if (newQuestion.trim().length ==0 ){
+       
+        if (newQuestion.trim().length ==0){
           setdisabled(true)
         }
       }

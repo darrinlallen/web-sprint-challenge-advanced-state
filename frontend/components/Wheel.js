@@ -1,42 +1,45 @@
 import React from 'react'
 import {useState, useReducer} from 'react'
+import Wheelie, {initialWheelState }  from '../state/reducer'
+import { Wheels } from '../state/action-creators'
+import {connect} from 'react-redux'
+import reducer from '../state/reducer'
 let initial =0
-export default function Wheel(props) {
+export function Wheel(props) {
   const [index, setindex] = useState(initial)
   const [pos, setpos] = useState(0)
-  let num =index
+  const [state, dispatch] = useReducer(reducer)
+
+  let num = props.index
   function clock (){
-   
   
-    if (index == 5){
+    if (props.index == 5){
     num = 0
-    setpos(0)
       setindex(0)
     }
     else {
-      if (index < 5){
+      if (props.index < 5){
     setindex(index+1)}
 
-    num = {index}
-    setpos(num)
-    console.log(num)}
-
-    }
-  
+    num = index
+   
+  }  
+  console.log(index)
+  props.Wheels(num)
+}
     function cclock (){
      
-      if (index == 0 ){
+      if (props.index == 0 ){
        num = 5
         setindex(5)
-        setpos(num)
       }
         else {
       
         setindex(index-1)
-        num = {index}
+        num = index
           setpos(num)
       console.log(num)}
-        
+props.Wheels(num)
       }
   
   let cl = "cog active"
@@ -50,7 +53,7 @@ export default function Wheel(props) {
       { 
         [0, 1, 2, 3, 4, 5].map((idx) => (
         
-          <><div key={idx} style={{ "--i": idx }} className={`${idx == num ? 'cog active' : 'cog'}`}>{`${idx === num ? 'B' : ''}`}</div></>
+          <><div key={idx} style={{ "--i": idx }} className={`${idx == num? 'cog active' : 'cog'}`}>{`${idx == num ? 'B' : ''}`}</div></>
           
             
           ))
@@ -63,4 +66,12 @@ export default function Wheel(props) {
       </div>
     </div>
   )
-}
+      }
+  const mapStateToProps = (state) =>{
+    return { 
+    index: state.Wheelie.index
+    }
+  }
+
+
+export default connect(mapStateToProps,{Wheels})(Wheel)

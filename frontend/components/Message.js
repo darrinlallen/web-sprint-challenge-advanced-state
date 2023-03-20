@@ -8,7 +8,7 @@ import { SET_INFO_MESSAGE } from '../state/action-types'
 import reducer from '../state/reducer'
  function Message(props) {
   const [state, dispatch] = useReducer(reducer, initialMessageState)
-
+console.log(props)
 console.log(props.message)
   return <div id="message">{props.message}</div> }
 
