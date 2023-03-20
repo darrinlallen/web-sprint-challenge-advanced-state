@@ -32,7 +32,7 @@ let neworder =''
 function handleq(e) {
    setnewQuestion(e.target.value)
   console.log(disabled)
-  if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0  ){
+  if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0 ){
     setdisabled(false) 
     q = false
   }
@@ -50,12 +50,17 @@ function handleq(e) {
     }
     function handlef(e) {
       setnewFalseAnswer(e.target.value)
+    
       if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0  ){
+    
         setdisabled(false) 
-        q = false
+        q = false}
+        if (newQuestion.trim().length ==0 ){
+          setdisabled(true)
+        }
       }
         
-        }  
+          
   function onSubmit (evt)  {
 
     evt.preventDefault();
@@ -74,15 +79,15 @@ console.log(props)
   setnewTrueAnswer('')
   props.setMessage(`Congrats: "${newQuestion}" is a great question!`)
   console.log(props)
-
+setdisabled(true)
   }
   return (
-    <form id="form">
+    <form onSubmit={onSubmit} id="form">
       <h2>Create New Quiz</h2>
       <input maxLength={50} onChange={handleq} id="newQuestion" placeholder="Enter question" value={newQuestion}/>
       <input maxLength={50} onChange={handlet} id="newTrueAnswer" placeholder="Enter true answer" value={newTrueAnswer}/>
       <input maxLength={50} onChange ={handlef} id="newFalseAnswer" placeholder="Enter false answer"  value={newFalseAnswer}/>
-      <button onClick={onSubmit} disabled = {disabled} id="submitNewQuizBtn" >Submit new quiz</button>
+      <button disabled={disabled}  id="submitNewQuizBtn" >Submit new quiz</button>
     </form>
   )
 }

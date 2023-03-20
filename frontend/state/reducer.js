@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux'
 import { SET_INFO_MESSAGE } from './action-types'
 
-const initialWheelState = 0
+const initialWheelState = {
+  wheelie: 0}
 function wheel(state = initialWheelState, action) {
   return state
 }
@@ -16,7 +17,7 @@ function selectedAnswer(state = initialSelectedAnswerState, action) {
   return state
 }
 
-export const initialMessageState = {message: 'jjjjj'}
+export const initialMessageState = {message: ''}
       
 export const infoMessage = (state = initialMessageState, action) => {
   console.log(action.payload)

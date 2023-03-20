@@ -6,7 +6,6 @@ import infoMessage, { initialMessageState }  from '../state/reducer'
 import { useReducer } from 'react'
 import { SET_INFO_MESSAGE } from '../state/action-types'
 import reducer from '../state/reducer'
-
  function Message(props) {
   const [state, dispatch] = useReducer(reducer, initialMessageState)
 
