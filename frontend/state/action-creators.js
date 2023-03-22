@@ -28,8 +28,11 @@ export function setQuiz() {return {
   type: SET_QUIZ_INTO_STATE
 } }
 
-export function inputChange() {return{
-  type: INPUT_CHANGE
+export function inputChange(question1, question2, question3) {return{
+  type: INPUT_CHANGE,
+  payload1: question1,
+  payload2: question2,
+  payload3: question3
 } }
 
 export function resetForm() {return{

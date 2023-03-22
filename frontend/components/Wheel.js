@@ -9,10 +9,10 @@ export function Wheel(props) {
   const [index, setindex] = useState(initial)
   const [state, dispatch] = useReducer(reducer)
   let active = index
-
+props.Wheels(active)
   console.log(initial)
   console.log(active)
-
+console.log(props.index)
   function clock (){
     initial = index
    
@@ -24,8 +24,12 @@ export function Wheel(props) {
     setindex(initial+1)
       initial = initial +1
     }
+    if (index >0){
    active = index -1
-
+    }
+    else {
+      active = index
+    }
   props.Wheels(active)
 }
     function cclock (){
@@ -41,8 +45,12 @@ export function Wheel(props) {
         setindex(initial-1)
         initial = initial -1
           }
+          if (index >0){
          active = index -1
-         
+          }
+          else {
+            active = index
+          }
 props.Wheels(active)
       }
   
@@ -54,7 +62,7 @@ props.Wheels(active)
       { 
         [0, 1, 2, 3, 4, 5].map((idx) => (
           
-          <><div key={idx} style={{ "--i": idx }} className={`${(idx === active )? 'cog active' : 'cog'}`}>{`${(idx === index )? 'B' : ''}`}</div></>
+          <><div key={idx} style={{ "--i": idx }} className={`${(idx == props.index )? 'cog active' : 'cog'}`}>{`${(idx == props.index )? 'B' : ''}`}</div></>
           
             
           ))

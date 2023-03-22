@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import * as actionCreators from '../state/action-creators'
 import axios from 'axios'
 import { setMessage } from '../state/action-creators'
+import { inputChange } from '../state/action-creators'
 import Message from './Message'
 import {infoMessage, initialMessageState} from '../state/reducer'
 import { useReducer } from 'react'
@@ -17,58 +18,61 @@ let f =''
 function Form(props) {
 
    const [disabled, setdisabled] = useState(true)
-const[newQuestion, setnewQuestion] = useState('')
-const [newTrueAnswer, setnewTrueAnswer] = useState('')
-const [newFalseAnswer, setnewFalseAnswer] = useState('')
+const[newQuestion, setnewQuestion] = useState(q)
+const [newTrueAnswer, setnewTrueAnswer] = useState(t)
+const [newFalseAnswer, setnewFalseAnswer] = useState(f)
 const [state, dispatch] = useReducer(reducer)
 
 
 let neworder =''
+console.log(props)
 
 function handleq(e) {
-  
+
    setnewQuestion(e.target.value)
    q = newQuestion
-  console.log(t)
-  if ((q.trim().length>0 && t.trim().length>0) || q == '  question  ' ){
+  console.log(q.trim())
+  if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0 ){
     setdisabled(false) 
-    
+    console.log('This is where we are')
   }
   else {
     setdisabled(true)
-
   }
+  props.inputChange(newQuestion, newTrueAnswer, newFalseAnswer)
+
 
 
 
   }
   function handlet(e) {
-    setdisabled(true)
     setnewTrueAnswer(e.target.value)
-    t= newTrueAnswer
-    console.log(t)
-    
-    if (q.trim().length > 0 && t.trim().length >0 ){
+    t = newTrueAnswer
+    if (newQuestion.trim().length > 0 && newTrueAnswer.trim().length >0 ){
       setdisabled(false) 
       
     }
-    else {
-      setdisabled(true)
-    }
+else {
+  setdisabled(true)
+}   
   
   
-    }
+props.inputChange(newQuestion, newTrueAnswer, newFalseAnswer)
+}
     function handlef(e) {
     
       setnewFalseAnswer(e.target.value)
     f = newFalseAnswer
-    console.log(f)
+
       if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0  ){
     
         setdisabled(false) 
       }
-       
-      
+    else {
+      setdisabled(true)
+    }       
+      props.inputChange(newQuestion, newTrueAnswer, newFalseAnswer)
+    
       }
         
           
@@ -110,9 +114,8 @@ const mapStateToProps = (state) =>{
   falsy: state.form.newFalseAnswer
   }
 }
-//  const mapDispatchToProps = {setMessage}
   
 
   
   
-export default connect(mapStateToProps,{setMessage})(Form)
+export default connect(mapStateToProps,{setMessage, inputChange})(Form)

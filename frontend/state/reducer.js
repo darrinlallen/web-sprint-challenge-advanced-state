@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { MOVE_CLOCKWISE, SET_INFO_MESSAGE } from './action-types'
+import { INPUT_CHANGE, MOVE_CLOCKWISE, SET_INFO_MESSAGE } from './action-types'
 
 export const initialWheelState =  0
 function Wheelie(state = initialWheelState, action) {
@@ -46,8 +46,14 @@ export const infoMessage = (state = initialMessageState, action) => {
     newFalseAnswer: '',
   }
   function form(state = initialFormState, action) {
-    return state}
-
+    if (action.type == 'INPUT_CHANGE'){
+    return ({...state,
+  newQuestion: action.payload1,
+newTrueAnswer: action.payload2,
+newFalseAnswer: action.payload3 })
+    }
+    else {return state}
+    }
   
   export default combineReducers({ Wheelie, quiz, selectedAnswer, infoMessage, form })
   
