@@ -9,11 +9,9 @@ import { useReducer } from 'react'
 import reducer from '../state/reducer'
 import { SET_INFO_MESSAGE } from '../state/action-types'
 import App from './App'
-let t= true
-let q = true
-let f = true
-let go = true
-
+let q = ''
+let t= ''
+let f =''
 
 
 function Form(props) {
@@ -24,21 +22,21 @@ const [newTrueAnswer, setnewTrueAnswer] = useState('')
 const [newFalseAnswer, setnewFalseAnswer] = useState('')
 const [state, dispatch] = useReducer(reducer)
 
-let q = true
-let t= ''
-let f =''
+
 let neworder =''
 
 function handleq(e) {
-  setdisabled(true)
+  
    setnewQuestion(e.target.value)
-  console.log(disabled)
-  if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0 && newFalseAnswer.trim().length>0){
+   q = newQuestion
+  console.log(t)
+  if ((q.trim().length>0 && t.trim().length>0) || q == '  question  ' ){
     setdisabled(false) 
-    q = false
+    
   }
-  if (newQuestion.trim().length ==0){
+  else {
     setdisabled(true)
+
   }
 
 
@@ -47,30 +45,30 @@ function handleq(e) {
   function handlet(e) {
     setdisabled(true)
     setnewTrueAnswer(e.target.value)
-    console.log(disabled)
+    t= newTrueAnswer
+    console.log(t)
     
-    if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0 ){
+    if (q.trim().length > 0 && t.trim().length >0 ){
       setdisabled(false) 
-      q = false
+      
     }
-    if (newQuestion.trim().length ==0){
+    else {
       setdisabled(true)
     }
   
   
     }
     function handlef(e) {
-      setdisabled(true)
-      setnewFalseAnswer(e.target.value)
     
+      setnewFalseAnswer(e.target.value)
+    f = newFalseAnswer
+    console.log(f)
       if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0  ){
     
         setdisabled(false) 
-        q = false}
+      }
        
-        if (newQuestion.trim().length ==0){
-          setdisabled(true)
-        }
+      
       }
         
           
@@ -106,7 +104,10 @@ setdisabled(true)
 }
 const mapStateToProps = (state) =>{
   return { 
-  message: state.infoMessage.message
+  message: state.infoMessage.message,
+  ques: state.form.newQuestion,
+  tr: state.form.newTrueAnswer,
+  falsy: state.form.newFalseAnswer
   }
 }
 //  const mapDispatchToProps = {setMessage}

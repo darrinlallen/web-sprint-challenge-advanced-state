@@ -3,8 +3,7 @@ import { MOVE_CLOCKWISE, SET_INFO_MESSAGE } from './action-types'
 
 export const initialWheelState =  0
 function Wheelie(state = initialWheelState, action) {
-console.log(action.type)
-console.log(action.payload)
+
   if (action.type == 'MOVE_CLOCKWISE'){
     return ({
   ...state,
@@ -30,9 +29,7 @@ function selectedAnswer(state = initialSelectedAnswerState, action) {
 export const initialMessageState = {message: ''}
       
 export const infoMessage = (state = initialMessageState, action) => {
-  console.log(action.payload)
-  console.log((action.type))
-  console.log(state)
+
   if (action.type == 'SET_INFO_MESSAGE'){
   return ({
 ...state,

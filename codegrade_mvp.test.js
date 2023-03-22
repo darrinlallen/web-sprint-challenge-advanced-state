@@ -48,7 +48,8 @@ const testCogs = activeIdx => {
   expect(cogs()).toHaveLength(6)
   cogs().forEach((cog, idx) => {
     if (idx === activeIdx) {
-      expect(cog.textContent).toBe('B')
+
+  expect(cog.textContent).toBe('B')
       expect(cog.className).toMatch(/active/)
     } else {
       expect(cog.textContent).toBeFalsy()
