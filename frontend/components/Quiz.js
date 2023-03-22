@@ -44,6 +44,7 @@ let choiceme2 = 'Select'
   setchoice2('Select')
   setdisabled(false)
   c2 = false
+  props.setMessage('')
   }
 
   function select2() {
@@ -54,6 +55,7 @@ let choiceme2 = 'Select'
     setchoice4('Select')
     c1 =false
     setselectme1('answer')
+    props.setMessage('')
     }
   
     const getId = () => {

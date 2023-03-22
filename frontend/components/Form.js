@@ -23,6 +23,7 @@ const [newTrueAnswer, setnewTrueAnswer] = useState(t)
 const [newFalseAnswer, setnewFalseAnswer] = useState(f)
 const [state, dispatch] = useReducer(reducer)
 
+props.inputChange(props.ques, props.tr, props.falsy)
 
 let neworder =''
 console.log(props)
