@@ -3,16 +3,16 @@ import { connect } from 'react-redux'
 import * as actionCreators from '../state/action-creators'
 import axios from 'axios'
 import { setMessage } from '../state/action-creators'
-import { inputChange } from '../state/action-creators'
+import {inputChange} from '../state/action-creators'
 import Message from './Message'
 import {infoMessage, initialMessageState} from '../state/reducer'
 import { useReducer } from 'react'
 import reducer from '../state/reducer'
 import { SET_INFO_MESSAGE } from '../state/action-types'
 import App from './App'
-let q = ''
-let t= ''
-let f =''
+let q = 'foo'
+let t= 'bar'
+let f ='baz'
 
 
 function Form(props) {
@@ -23,7 +23,7 @@ const [newTrueAnswer, setnewTrueAnswer] = useState(t)
 const [newFalseAnswer, setnewFalseAnswer] = useState(f)
 const [state, dispatch] = useReducer(reducer)
 
-props.inputChange(props.ques, props.tr, props.falsy)
+props.inputChange(newQuestion, newTrueAnswer, newFalseAnswer)
 
 let neworder =''
 console.log(props)
@@ -31,7 +31,7 @@ console.log(props)
 function handleq(e) {
 
    setnewQuestion(e.target.value)
-   q = newQuestion
+//   q = newQuestion
   console.log(q.trim())
   if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0 ){
     setdisabled(false) 
@@ -48,7 +48,7 @@ function handleq(e) {
   }
   function handlet(e) {
     setnewTrueAnswer(e.target.value)
-    t = newTrueAnswer
+  //  t = newTrueAnswer
     if (newQuestion.trim().length > 0 && newTrueAnswer.trim().length >0 ){
       setdisabled(false) 
       
@@ -63,7 +63,7 @@ props.inputChange(newQuestion, newTrueAnswer, newFalseAnswer)
     function handlef(e) {
     
       setnewFalseAnswer(e.target.value)
-    f = newFalseAnswer
+    //f = newFalseAnswer
 
       if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0  ){
     

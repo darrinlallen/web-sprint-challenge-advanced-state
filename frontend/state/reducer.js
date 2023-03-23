@@ -43,7 +43,7 @@ export const infoMessage = (state = initialMessageState, action) => {
   const initialFormState = {
     newQuestion: '',
     newTrueAnswer: '',
-    newFalseAnswer: '',
+    newFalseAnswer: ''
   }
   function form(state = initialFormState, action) {
     if (action.type == 'INPUT_CHANGE'){
