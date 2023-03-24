@@ -1,13 +1,15 @@
+import { act } from 'react-dom/test-utils'
 import { combineReducers } from 'redux'
 import { INPUT_CHANGE, MOVE_CLOCKWISE, SET_INFO_MESSAGE } from './action-types'
 
-export const initialWheelState =  0
+export const initialWheelState =  5
 function Wheelie(state = initialWheelState, action) {
 
   if (action.type == 'MOVE_CLOCKWISE'){
     return ({
   ...state,
-   index: action.payload
+   answer: action.payload,
+      index: action.payload
     })
   }
     else {

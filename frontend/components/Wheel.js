@@ -5,14 +5,19 @@ import { Wheels } from '../state/action-creators'
 import {connect} from 'react-redux'
 import reducer from '../state/reducer'
 let initial =0
+let active;
+let classy = 'no'
 export function Wheel(props) {
-  const [index, setindex] = useState(initial)
+  const [index, setindex] = useState(0)
   const [state, dispatch] = useReducer(reducer)
-  let active = index
+  
+     active = index
+     
 props.Wheels(active)
   console.log(initial)
   console.log(active)
 console.log(props.index)
+
   function clock (){
     initial = index
    
@@ -62,7 +67,7 @@ props.Wheels(active)
       { 
         [0, 1, 2, 3, 4, 5].map((idx) => (
           
-          <><div key={idx} style={{ "--i": idx }} className={`${(idx == props.index )? 'cog active' : 'cog'}`}>{`${(idx == props.index )? 'B' : ''}`}</div></>
+          <><div key={idx} style={{ "--i": idx }} className={`${(idx === initial)? (classy ='cog', 'cog active') : 'cog'}`}>{`${((idx === initial)  )? 'B' : ''}`}</div></>
           
             
           ))

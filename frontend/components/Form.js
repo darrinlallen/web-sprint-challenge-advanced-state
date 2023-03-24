@@ -26,7 +26,7 @@ const [state, dispatch] = useReducer(reducer)
 props.inputChange(newQuestion, newTrueAnswer, newFalseAnswer)
 
 let neworder =''
-console.log(props)
+console.log(state)
 
 function handleq(e) {
 
