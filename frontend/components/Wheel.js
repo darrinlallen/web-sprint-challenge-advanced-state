@@ -8,18 +8,14 @@ let initial =0
 let active;
 let bletter = "here"
 let classy = 'no'
+let wheelnum = 0
 export function Wheel(props) {
-  const [index, setindex] = useState(0)
+  const [index, setindex] = useState(wheelnum)
   const [state, dispatch] = useReducer(reducer)
-  
-  if (index >0){
-    active = index -1
-     }
-     else {
-       active = index
-     } 
+  wheelnum = index
+
      
-props.Wheels(active)
+props.Wheels(index)
   console.log(initial)
   console.log(active)
 console.log(props.index)
@@ -30,6 +26,7 @@ bletter = "not here"
     if (initial ==5 ){
       setindex(0)
       initial =0
+  
     }
     else {
     setindex(initial+1)
