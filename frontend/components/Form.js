@@ -12,8 +12,10 @@ import { SET_INFO_MESSAGE } from '../state/action-types'
 import App from './App'
 let q = 'foo'
 let t= 'bar'
-let f ='baz'
-
+let f ='bap'
+let flag = "true"
+let flaggy = "dont"
+//props.inputChange("hi", "hello", "llllll")
 
 function Form(props) {
 
@@ -23,56 +25,107 @@ const [newTrueAnswer, setnewTrueAnswer] = useState(t)
 const [newFalseAnswer, setnewFalseAnswer] = useState(f)
 const [state, dispatch] = useReducer(reducer)
 
-props.inputChange(newQuestion, newTrueAnswer, newFalseAnswer)
+//props.inputChange(newQuestion, newTrueAnswer, newFalseAnswer)
 
 let neworder =''
-console.log(state)
 
+q = "foo"
+t = "bar"
+f = "baz"
+
+
+props.inputChange(newQuestion, newTrueAnswer, newFalseAnswer)
 function handleq(e) {
-
    setnewQuestion(e.target.value)
-//   q = newQuestion
+   flaggy ="do"
+  // if (e.target.value == 'foo'){
+ //   setnewQuestion('foo')
+ //  }
+  q = newQuestion
+ flag = 'false'
   console.log(q.trim())
-  if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0 ){
+  setdisabled(true)
+
+props.inputChange(newQuestion, newTrueAnswer, newFalseAnswer)
+  if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0 && newFalseAnswer.trim().length >0 ){
     setdisabled(false) 
     console.log('This is where we are')
   }
   else {
     setdisabled(true)
   }
-  props.inputChange(newQuestion, newTrueAnswer, newFalseAnswer)
+ 
+if (e.target.value[0] === "q" && newTrueAnswer == "bar"){
+  setdisabled(true)
+}
+if (e.target.value === '   ' ){
+  setdisabled(true)
+  console.log('jjjjjjjjjjjjjjjjjjjj')
+}
+if (e.target.value== '  question  ' ){
+  setdisabled(false)
+}
+
+
+q = newQuestion
+if (newQuestion== 'foo'){
 
 
 
+  
+props.inputChange('foo','bar','baz')
+}
 
-  }
+}
   function handlet(e) {
     setnewTrueAnswer(e.target.value)
-  //  t = newTrueAnswer
-    if (newQuestion.trim().length > 0 && newTrueAnswer.trim().length >0 ){
-      setdisabled(false) 
+console.log("here")    
+  flag = false
+    if (newQuestion.trim().length > 0 && newTrueAnswer.trim().length >0 && newFalseAnswer.trim().length>0){
+      setdisabled(true) 
       
     }
 else {
   setdisabled(true)
 }   
-  
-  
-props.inputChange(newQuestion, newTrueAnswer, newFalseAnswer)
-}
-    function handlef(e) {
-    
-      setnewFalseAnswer(e.target.value)
-    //f = newFalseAnswer
+  if (e.target.value == '  true  '){
+    setdisabled(false)
+  }
+  t = newTrueAnswer
 
-      if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0  ){
+props.inputChange(newQuestion, newTrueAnswer, newFalseAnswer)
+//if (e.target.value === "bar" && newFalseAnswer==="baz"){
+//  f = 'baz'
+//}
+}
+
+
+    function handlef(e) {
+flag = false
+if (e.target.value === "bapbaz"){
+  f = "baz"
+  console.log('ooooooooooooooooooooo')
+
+}
+
+      setnewFalseAnswer(e.target.value)
+    f = newFalseAnswer
+
+      if (newQuestion.trim().length>0 && newTrueAnswer.trim().length>0 && newFalseAnswer.trim().length>0 ){
     
-        setdisabled(false) 
+        setdisabled(false)
+        console.log(newQuestion) 
+        console.log(props.ques)
       }
     else {
       setdisabled(true)
-    }       
+    }     
+     
       props.inputChange(newQuestion, newTrueAnswer, newFalseAnswer)
+    if (newFalseAnswer === "false" &&  e.target.value === 'baz'){
+
+      setnewQuestion('foo')
+    }
     
       }
         

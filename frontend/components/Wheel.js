@@ -6,12 +6,18 @@ import {connect} from 'react-redux'
 import reducer from '../state/reducer'
 let initial =0
 let active;
+let bletter = "here"
 let classy = 'no'
 export function Wheel(props) {
   const [index, setindex] = useState(0)
   const [state, dispatch] = useReducer(reducer)
   
-     active = index
+  if (index >0){
+    active = index -1
+     }
+     else {
+       active = index
+     } 
      
 props.Wheels(active)
   console.log(initial)
@@ -20,7 +26,7 @@ console.log(props.index)
 
   function clock (){
     initial = index
-   
+bletter = "not here"   
     if (initial ==5 ){
       setindex(0)
       initial =0
@@ -38,6 +44,7 @@ console.log(props.index)
   props.Wheels(active)
 }
     function cclock (){
+      bletter = "not here"
       initial = index
       console.log(index)
       console.log(active)
@@ -67,7 +74,7 @@ props.Wheels(active)
       { 
         [0, 1, 2, 3, 4, 5].map((idx) => (
           
-          <><div key={idx} style={{ "--i": idx }} className={`${(idx === initial)? (classy ='cog', 'cog active') : 'cog'}`}>{`${((idx === initial)  )? 'B' : ''}`}</div></>
+          <><div key={idx} style={{ "--i": idx }} className={`${(idx === initial)? (classy ='cog active', 'cog active') : 'cog'}`}>{`${((idx === initial)   )? 'B' : ''}`}</div></>
           
             
           ))
