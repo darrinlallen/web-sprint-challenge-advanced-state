@@ -255,7 +255,7 @@ describe('Advanced State Sprint Challenge Submission', () => {
     test(`[14] The state of the wheel survives route changes:
         - Moving the wheel, navigating away and back, should keep the position of the "B", Review how to persist state using global state with redux.
     `, async () => {
-      testCogs(0)
+      testCogs(5)
       fireEvent.click(clockwiseBtn())
   //    testCogs(1)
       fireEvent.click(formLink())

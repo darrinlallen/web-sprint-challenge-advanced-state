@@ -13,9 +13,10 @@ export function Wheel(props) {
   const [index, setindex] = useState(wheelnum)
   const [state, dispatch] = useReducer(reducer)
   wheelnum = index
-
+  
      
-props.Wheels(index)
+props.Wheels(wheelnum)
+
   console.log(initial)
   console.log(active)
 console.log(props.index)
@@ -26,7 +27,6 @@ bletter = "not here"
     if (initial ==5 ){
       setindex(0)
       initial =0
-  
     }
     else {
     setindex(initial+1)
@@ -38,7 +38,8 @@ bletter = "not here"
     else {
       active = index
     }
-  props.Wheels(active)
+//    wheelnum = index
+  props.Wheels(index)
 }
     function cclock (){
       bletter = "not here"
@@ -71,7 +72,7 @@ props.Wheels(active)
       { 
         [0, 1, 2, 3, 4, 5].map((idx) => (
           
-          <><div key={idx} style={{ "--i": idx }} className={`${(idx === initial)? (classy ='cog active', 'cog active') : 'cog'}`}>{`${((idx === initial)   )? 'B' : ''}`}</div></>
+          <><div key={idx} style={{ "--i": idx }} className={`${(idx === initial)? (classy ='cog active', 'cog active') : 'cog'}`}>{`${((idx === initial || idx === index)   )? 'B' : ''}`}</div></>
           
             
           ))
