@@ -9,60 +9,103 @@ let active;
 let bletter = "here"
 let classy = 'no'
 let wheelnum = 0
+let cnt = 0
 export function Wheel(props) {
   const [index, setindex] = useState(wheelnum)
   const [state, dispatch] = useReducer(reducer)
-  wheelnum = index
-  
-     
-props.Wheels(wheelnum)
 
-  console.log(initial)
-  console.log(active)
-console.log(props.index)
+  wheelnum = index
+ 
+
+  if (index ==0 ){
+    cnt++
+    active = 0
+   initial =0
+  }
+  else if (index ==5) {
+    cnt++
+    active = 5
+    initial =5
+  
+  }
+  else if (cnt ===0){
+    cnt++
+    active=0
+    initial=0
+  
+  }
+
+ 
 
   function clock (){
-    initial = index
-bletter = "not here"   
-    if (initial ==5 ){
-      setindex(0)
-      initial =0
-    }
-    else {
-    setindex(initial+1)
-      initial = initial +1
-    }
-    if (index >0){
-   active = index -1
-    }
-    else {
-      active = index
-    }
-//    wheelnum = index
-  props.Wheels(index)
-}
-    function cclock (){
-      bletter = "not here"
-      initial = index
-      console.log(index)
-      console.log(active)
-      if (initial == 0 ){
-        setindex(5)
-        initial =5
-      }
+   initial = index
+   initial = index
+   bletter = "not here"   
+       if (wheelnum ==5 ){
+        if (initial ==5){
+         setindex(0)
+         initial=0
+         active=0}
+         }
+         else {
+          setindex(index+1)
+          initial = initial+1
+          active = active +1
+         }
+  
+      if (wheelnum ==5){
+        if (initial==0){
+          setindex(0)
+          active =1
+        }
         else {
+      setindex(index+1)
+      initial = initial+1
+      active = active +1
+    }   
+
+  }
+//    if (index >0){
+//   active = index -1
+//    }
+//    else {
+//      active = index
+ //   }
+//    wheelnum = index
+}
+
+    function cclock (){
+      initial = 0
+      bletter = "not here"
       
-        setindex(initial-1)
-        initial = initial -1
-          }
-          if (index >0){
-         active = index -1
-          }
-          else {
-            active = index
-          }
-props.Wheels(active)
+          if (wheelnum ==0 ){
+           if (initial ==5 && wheelnum ==0){
+            setindex(5)
+            initial=3
+            active=93}
+            }
+            else {
+             setindex(2)
+             initial = 4
+             active = 93
+            }
+   
+
+            
+         if (wheelnum ==0){
+           if (initial==0){
+             setindex(0)
+             active =83
+           }
+           else {
+         setindex(4)
+         initial = 3
+         active = 38
+       }   
+    
       }
+      active=7
+    }   
   
  
   
@@ -72,7 +115,7 @@ props.Wheels(active)
       { 
         [0, 1, 2, 3, 4, 5].map((idx) => (
           
-          <><div key={idx} style={{ "--i": idx }} className={`${(idx === initial)? (classy ='cog active', 'cog active') : 'cog'}`}>{`${((idx === initial || idx === index)   )? 'B' : ''}`}</div></>
+          <><div key={idx} style={{ "--i": idx }} className={`${(idx === active)? (classy ='cog active', 'cog active') : 'cog'}`}>{`${(( idx === active)   )? 'B' : ''}`}</div></>
           
             
           ))

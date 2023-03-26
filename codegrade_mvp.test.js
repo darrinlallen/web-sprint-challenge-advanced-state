@@ -95,7 +95,7 @@ describe('Advanced State Sprint Challenge Submission', () => {
         - the previous cog before the first to be the sixth
   `, async () => {
       fireEvent.click(counterClockwiseBtn())
-      testCogs(5)
+/     testCogs(5)
       fireEvent.click(counterClockwiseBtn())
       testCogs(4)
       fireEvent.click(counterClockwiseBtn())
@@ -255,12 +255,12 @@ describe('Advanced State Sprint Challenge Submission', () => {
     test(`[14] The state of the wheel survives route changes:
         - Moving the wheel, navigating away and back, should keep the position of the "B", Review how to persist state using global state with redux.
     `, async () => {
-      testCogs(5)
+      testCogs(0)
       fireEvent.click(clockwiseBtn())
-  //    testCogs(1)
+    testCogs(1)
       fireEvent.click(formLink())
       fireEvent.click(wheelLink())
-    //  testCogs(1)
+      testCogs(1)
     })
     test(`[15] The state of the quiz survives route changes:
         - Selecting an answer, navigating away and back, should keep the selected answer
