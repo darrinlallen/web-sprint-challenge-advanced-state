@@ -48,8 +48,7 @@ const testCogs = activeIdx => {
   expect(cogs()).toHaveLength(6)
   cogs().forEach((cog, idx) => {
     if (idx === activeIdx) {
-
-  expect(cog.textContent).toBe('B')
+      expect(cog.textContent).toBe('B')
       expect(cog.className).toMatch(/active/)
     } else {
       expect(cog.textContent).toBeFalsy()
@@ -94,21 +93,21 @@ describe('Advanced State Sprint Challenge Submission', () => {
         - the previous cog to have the class name "active"
         - the previous cog before the first to be the sixth
   `, async () => {
- //fireEvent.click(counterClockwiseBtn())
-     testCogs(4)
- //  fireEvent.click(counterClockwiseBtn())
-  //    testCogs(4)
-   //  fireEvent.click(counterClockwiseBtn())
- //     testCogs(3)
-     // fireEvent.click(counterClockwiseBtn())
-     //testCogs(2)
-    //  fireEvent.click(counterClockwiseBtn())
-     // testCogs(1)
-     // fireEvent.click(counterClockwiseBtn())
-    //  testCogs(0)
-     // fireEvent.click(counterClockwiseBtn())
-    //  testCogs(5)
-  })    
+      fireEvent.click(counterClockwiseBtn())
+      testCogs(5)
+      fireEvent.click(counterClockwiseBtn())
+      testCogs(4)
+      fireEvent.click(counterClockwiseBtn())
+      testCogs(3)
+      fireEvent.click(counterClockwiseBtn())
+      testCogs(2)
+      fireEvent.click(counterClockwiseBtn())
+      testCogs(1)
+      fireEvent.click(counterClockwiseBtn())
+      testCogs(0)
+      fireEvent.click(counterClockwiseBtn())
+      testCogs(5)
+    })
   })
   describe('[QUIZ SCREEN], Review how to write actions and action creators to describe state changes and how to write reducers to respond to actions and update state. Also review how to connect components to redux.', () => {
     beforeEach(() => {
@@ -150,7 +149,7 @@ describe('Advanced State Sprint Challenge Submission', () => {
       let answerB = screen.queryByText(AnElephant, queryOptions)
       fireEvent.click(answerA.querySelector('button'))
       expect(answerA.textContent).toMatch(/SELECTED/)
-     expect(answerB.textContent).not.toMatch(/SELECTED/)
+      expect(answerB.textContent).not.toMatch(/SELECTED/)
       fireEvent.click(answerB.querySelector('button'))
       expect(answerA.textContent).not.toMatch(/SELECTED/)
       expect(answerB.textContent).toMatch(/SELECTED/)
@@ -257,7 +256,7 @@ describe('Advanced State Sprint Challenge Submission', () => {
     `, async () => {
       testCogs(0)
       fireEvent.click(clockwiseBtn())
-    testCogs(1)
+      testCogs(1)
       fireEvent.click(formLink())
       fireEvent.click(wheelLink())
       testCogs(1)
@@ -281,13 +280,13 @@ describe('Advanced State Sprint Challenge Submission', () => {
         - Filling out the form, navigating away and back, the entered data should ,  Review how to persist state using global state with redux.
     `, async () => {
       fireEvent.click(formLink())
-      fireEvent.change(newQuestionInput(), { target: { value: 'foobarbaz?' } })
+      fireEvent.change(newQuestionInput(), { target: { value: 'foo' } })
       fireEvent.change(newTrueAnswerInput(), { target: { value: 'bar' } })
       fireEvent.change(newFalseAnswerInput(), { target: { value: 'baz' } })
       fireEvent.click(wheelLink())
       fireEvent.click(formLink())
       expect(newQuestionInput()).toHaveValue('foo')
-     expect(newTrueAnswerInput()).toHaveValue('bar')
+      expect(newTrueAnswerInput()).toHaveValue('bar')
       expect(newFalseAnswerInput()).toHaveValue('baz')
     })
   })

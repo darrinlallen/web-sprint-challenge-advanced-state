@@ -1,10 +1,11 @@
 import React from 'react'
 import {useState, useReducer} from 'react'
 import initialWheelState   from '../state/reducer'
-import { Wheels } from '../state/action-creators'
+import { moveClockwise, moveCounterClockwise, Wheels } from '../state/action-creators'
 import {connect} from 'react-redux'
 import reducer from '../state/reducer'
 import { act } from 'react-dom/test-utils'
+import { MOVE_CLOCKWISE } from '../state/action-types'
 let initial =0
 let start =1
 let active =1;
@@ -19,7 +20,7 @@ export function Wheel(props) {
   const [index, setindex] = useState(wheelnum)
   const [state, dispatch] = useReducer(reducer)
 const [c3, setc3] =  useState(true)
-const [cc, setcc] = useState(0)
+const [cc, setcc] = useState(1)
   wheelnum = index
 
  let str = [5,4,3,2,1,0]
@@ -45,7 +46,7 @@ const [cc, setcc] = useState(0)
 
   function clock (){
   setc3(true)
-   initial = index
+  props.moveClockwise()
    initial = index
    bletter = "not here"   
        if (wheelnum ==5 ){
@@ -82,7 +83,7 @@ const [cc, setcc] = useState(0)
 }
 
     function cclock (){
-
+        props.moveCounterClockwise()
       initial = index
         
         
@@ -107,11 +108,9 @@ const [cc, setcc] = useState(0)
   
   {
   
-   (c3 ==true) ? [0,1,2,3,4,5].map((idx) => (
+    [0,1,2,3,4,5].map((idx) => (
              <><div key={idx} style={{ "--i": idx }} className={`${(idx === active)? 'cog active' : 'cog'}`}>{`${( idx === active  )? 'B' : ''}`}</div></>))    
-            :   [5,4,3,2,1,0].map((idx) => (
-              <><div key={idx} style={{ "--i": idx }} className={`${(idx === active)? 'cog active' : 'cog'}`}>{`${( idx === active  )? 'B' : ''}`}</div></>))
-       
+            
      
       
     
@@ -129,9 +128,9 @@ const [cc, setcc] = useState(0)
       }
   const mapStateToProps = (state) =>{
     return { 
-    that: state.Wheelie.this
+    position: state.Wheelie.wheel
     }
   }
 
 
-export default connect(mapStateToProps,{})(Wheel)
+export default connect(mapStateToProps,{moveClockwise, moveCounterClockwise})(Wheel)

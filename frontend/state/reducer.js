@@ -1,6 +1,7 @@
 import { act } from 'react-dom/test-utils'
 import { combineReducers } from 'redux'
-import { INPUT_CHANGE, MOVE_CLOCKWISE, SET_INFO_MESSAGE } from './action-types'
+import { moveCounterClockwise } from './action-creators'
+import { INPUT_CHANGE, MOVE_CLOCKWISE, MOVE_COUNTERCLOCKWISE, SET_INFO_MESSAGE } from './action-types'
 
 export const initialWheelState =  2
 function Wheelie(state = initialWheelState, action) {
@@ -8,9 +9,15 @@ function Wheelie(state = initialWheelState, action) {
   if (action.type == 'MOVE_COUNTER'){
     return ({
   ...state,
-      wish: action.payload
+      wheel: action.payload
     })
   }
+    else if (action.type == MOVE_COUNTERCLOCKWISE){
+      ({
+        ...state,
+        wheel: action.payload
+      })
+    }
     else {
       return state
     }
