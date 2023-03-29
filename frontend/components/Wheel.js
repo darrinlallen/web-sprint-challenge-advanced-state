@@ -83,15 +83,24 @@ const [cc, setcc] = useState(0)
 
     function cclock (){
 
-           setc3(false)
-    
+      initial = index
+        
+        
+           if (initial ==0){
+            setindex(5)
+            initial=5
+            active=5}
+            
+            else {
+             setindex(index-1)
+             initial = initial-1
+             active = active -1
+            }
+     
+        
 
-          active = cc
-
-       console.log(active)
-
-
-      }
+      
+    }
   return (
     <div id="wrapper">
       <div id="wheel">
@@ -100,7 +109,7 @@ const [cc, setcc] = useState(0)
   
    (c3 ==true) ? [0,1,2,3,4,5].map((idx) => (
              <><div key={idx} style={{ "--i": idx }} className={`${(idx === active)? 'cog active' : 'cog'}`}>{`${( idx === active  )? 'B' : ''}`}</div></>))    
-            :   [0,0,0,0,0,0].map((idx) => (
+            :   [5,4,3,2,1,0].map((idx) => (
               <><div key={idx} style={{ "--i": idx }} className={`${(idx === active)? 'cog active' : 'cog'}`}>{`${( idx === active  )? 'B' : ''}`}</div></>))
        
      
