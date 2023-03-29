@@ -6,9 +6,9 @@ import { INPUT_CHANGE, MOVE_CLOCKWISE, MOVE_COUNTERCLOCKWISE, SET_INFO_MESSAGE }
 export const initialWheelState =  2
 function Wheelie(state = initialWheelState, action) {
 
-  if (action.type == 'MOVE_COUNTER'){
+  if (action.type == 'MOVE_CLOCKWISE'){
     return ({
-  ...state
+  ...state 
     })
   }
     else if (action.type == 'MOVE_COUNTERCLOCKWISE'){

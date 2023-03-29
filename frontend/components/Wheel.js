@@ -128,7 +128,7 @@ const [cc, setcc] = useState(1)
       }
   const mapStateToProps = (state) =>{
     return { 
-    position: state.Wheelie.wheel
+    position: state.Wheelie.position
     }
   }
 
