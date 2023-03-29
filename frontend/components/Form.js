@@ -24,7 +24,6 @@ const[newQuestion, setnewQuestion] = useState(q)
 const [newTrueAnswer, setnewTrueAnswer] = useState(t)
 const [newFalseAnswer, setnewFalseAnswer] = useState(f)
 const [state, dispatch] = useReducer(reducer)
-
 //props.inputChange(newQuestion, newTrueAnswer, newFalseAnswer)
 
 let neworder =''

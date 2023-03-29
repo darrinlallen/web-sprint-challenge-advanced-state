@@ -4,40 +4,47 @@ import initialWheelState   from '../state/reducer'
 import { Wheels } from '../state/action-creators'
 import {connect} from 'react-redux'
 import reducer from '../state/reducer'
+import { act } from 'react-dom/test-utils'
 let initial =0
-let active;
+let start =1
+let active =1;
 let bletter = "here"
 let classy = 'no'
 let wheelnum = 0
 let cnt = 0
+let a=0
+let cl = false
 export function Wheel(props) {
+
   const [index, setindex] = useState(wheelnum)
   const [state, dispatch] = useReducer(reducer)
-
+const [c3, setc3] =  useState(true)
+const [cc, setcc] = useState(0)
   wheelnum = index
- 
+
+ let str = [5,4,3,2,1,0]
 
   if (index ==0 ){
     cnt++
     active = 0
    initial =0
   }
-  else if (index ==5) {
+  else if (index ==5 ) {
     cnt++
     active = 5
     initial =5
   
   }
-  else if (cnt ===0){
+  else if (cnt ==0){
     cnt++
     active=0
     initial=0
-  
-  }
+  }  
 
- 
+
 
   function clock (){
+  setc3(true)
    initial = index
    initial = index
    bletter = "not here"   
@@ -75,51 +82,32 @@ export function Wheel(props) {
 }
 
     function cclock (){
-      initial = 0
-      bletter = "not here"
-      
-          if (wheelnum ==0 ){
-           if (initial ==5 && wheelnum ==0){
-            setindex(5)
-            initial=3
-            active=93}
-            }
-            else {
-             setindex(2)
-             initial = 4
-             active = 93
-            }
-   
 
-            
-         if (wheelnum ==0){
-           if (initial==0){
-             setindex(0)
-             active =83
-           }
-           else {
-         setindex(4)
-         initial = 3
-         active = 38
-       }   
+           setc3(false)
     
+
+          active = cc
+
+       console.log(active)
+
+
       }
-      active=7
-    }   
-  
- 
-  
   return (
     <div id="wrapper">
       <div id="wheel">
-      { 
-        [0, 1, 2, 3, 4, 5].map((idx) => (
-          
-          <><div key={idx} style={{ "--i": idx }} className={`${(idx === active)? (classy ='cog active', 'cog active') : 'cog'}`}>{`${(( idx === active)   )? 'B' : ''}`}</div></>
-          
-            
-          ))
-       } 
+  
+  {
+  
+   (c3 ==true) ? [0,1,2,3,4,5].map((idx) => (
+             <><div key={idx} style={{ "--i": idx }} className={`${(idx === active)? 'cog active' : 'cog'}`}>{`${( idx === active  )? 'B' : ''}`}</div></>))    
+            :   [0,0,0,0,0,0].map((idx) => (
+              <><div key={idx} style={{ "--i": idx }} className={`${(idx === active)? 'cog active' : 'cog'}`}>{`${( idx === active  )? 'B' : ''}`}</div></>))
+       
+     
+      
+    
+       
+    }
       </div>
     
       <div id="keypad">
@@ -127,13 +115,14 @@ export function Wheel(props) {
         <button id="clockwiseBtn" onClick={clock}>Clockwise</button>
       </div>
     </div>
+       
   )
       }
   const mapStateToProps = (state) =>{
     return { 
-    index: state.Wheelie.index
+    that: state.Wheelie.this
     }
   }
 
 
-export default connect(mapStateToProps,{Wheels})(Wheel)
+export default connect(mapStateToProps,{})(Wheel)
