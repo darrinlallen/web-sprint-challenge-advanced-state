@@ -8,14 +8,12 @@ function Wheelie(state = initialWheelState, action) {
 
   if (action.type == 'MOVE_COUNTER'){
     return ({
-  ...state,
-      wheel: action.payload
+  ...state
     })
   }
-    else if (action.type == MOVE_COUNTERCLOCKWISE){
-      ({
-        ...state,
-        wheel: action.payload
+    else if (action.type == 'MOVE_COUNTERCLOCKWISE'){
+      return ({
+        ...state
       })
     }
     else {
