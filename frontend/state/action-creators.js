@@ -4,15 +4,12 @@ import { INPUT_CHANGE, MOVE_CLOCKWISE, MOVE_COUNTERCLOCKWISE, RESET_FORM, SET_IN
 export function moveClockwise(position) {
   return{
  
-  type: MOVE_CLOCKWISE, 
-  payload: position
+  type: MOVE_CLOCKWISE,
   }
 }
 
 export function moveCounterClockwise(position) {return {
   type: MOVE_COUNTERCLOCKWISE,
-  payload: position
-
 } }
 
 export function selectAnswer() {return{

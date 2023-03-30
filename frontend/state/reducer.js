@@ -3,17 +3,18 @@ import { combineReducers } from 'redux'
 import { moveCounterClockwise } from './action-creators'
 import { INPUT_CHANGE, MOVE_CLOCKWISE, MOVE_COUNTERCLOCKWISE, SET_INFO_MESSAGE } from './action-types'
 
-export const initialWheelState =  2
+export const initialWheelState =  0
 function Wheelie(state = initialWheelState, action) {
 
   if (action.type == 'MOVE_CLOCKWISE'){
     return ({
-  ...state 
+  ...state, 
+
     })
   }
     else if (action.type == 'MOVE_COUNTERCLOCKWISE'){
       return ({
-        ...state
+        ...state,
       })
     }
     else {

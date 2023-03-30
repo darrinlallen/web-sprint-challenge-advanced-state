@@ -45,31 +45,33 @@ const [cc, setcc] = useState(1)
 
 
   function clock (){
-  setc3(true)
-  props.moveClockwise()
    initial = index
    bletter = "not here"   
        if (wheelnum ==5 ){
         if (initial ==5){
          setindex(0)
          initial=0
-         active=0}
+         active=0
+      }
          }
          else {
           setindex(index+1)
           initial = initial+1
           active = active +1
+        
          }
   
       if (wheelnum ==5){
         if (initial==0){
           setindex(0)
           active =1
+
         }
         else {
       setindex(index+1)
       initial = initial+1
       active = active +1
+    
     }   
 
   }
@@ -83,19 +85,21 @@ const [cc, setcc] = useState(1)
 }
 
     function cclock (){
-        props.moveCounterClockwise()
+        
       initial = index
         
         
            if (initial ==0){
             setindex(5)
             initial=5
-            active=5}
+            active=5
+          }
             
             else {
              setindex(index-1)
              initial = initial-1
              active = active -1
+          
             }
      
         
