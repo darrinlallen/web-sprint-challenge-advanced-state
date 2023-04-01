@@ -19,13 +19,13 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 // REDUX STORE
 const persistConfig = {
-  key: 'persist-key',
+  key: 'root',
   storage
 }
 const persistedreducer = persistReducer(persistConfig, reducer)
 export let store
 export const resetStore = () => {
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
   store = createStore(persistedreducer, composeEnhancers(applyMiddleware(thunk)))
   
 }

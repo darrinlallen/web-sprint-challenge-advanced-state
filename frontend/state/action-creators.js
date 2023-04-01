@@ -1,15 +1,17 @@
 import { INPUT_CHANGE, MOVE_CLOCKWISE, MOVE_COUNTERCLOCKWISE, RESET_FORM, SET_INFO_MESSAGE, SET_QUIZ_INTO_STATE, SET_SELECTED_ANSWER } from "./action-types"
 
 // ❗ You don't need to add extra action creators to achieve MVP
-export function moveClockwise(position) {
+export function moveClockwise(pos) {
   return{
  
   type: MOVE_CLOCKWISE,
+  payload: pos
   }
 }
 
-export function moveCounterClockwise(position) {return {
+export function moveCounterClockwise(pos) {return {
   type: MOVE_COUNTERCLOCKWISE,
+  payload: pos
 } }
 
 export function selectAnswer() {return{
@@ -61,4 +63,3 @@ export function postQuiz() {
     // - Dispatch the resetting of the form
   }
 }
-// ❗ On promise rejections, use log statements or breakpoints, and put an appropriate error message in state
