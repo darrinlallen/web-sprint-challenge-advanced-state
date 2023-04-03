@@ -1,4 +1,3 @@
-import { act } from 'react-dom/test-utils'
 import { combineReducers } from 'redux'
 import { moveCounterClockwise } from './action-creators'
 import { INPUT_CHANGE, MOVE_CLOCKWISE, MOVE_COUNTERCLOCKWISE, SET_INFO_MESSAGE } from './action-types'
@@ -21,7 +20,7 @@ function Wheelthing(state = initialWheelState, action) {
       })
     }
     else {
-      return initialWheelState    }
+      return state    }
   }
 
 
