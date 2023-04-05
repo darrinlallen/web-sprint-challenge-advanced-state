@@ -4,12 +4,14 @@ import * as actionCreators from '../state/action-creators'
 import axios from 'axios'
 import { setMessage } from '../state/action-creators'
 import {inputChange} from '../state/action-creators'
+import Wheel from './Wheel'
 import Message from './Message'
 import {infoMessage, initialMessageState} from '../state/reducer'
 import { useReducer } from 'react'
 import reducer from '../state/reducer'
 import { SET_INFO_MESSAGE } from '../state/action-types'
 import App from './App'
+import {Wheelthing} from '../state/reducer'
 let q = 'foo'
 let t= 'bar'
 let f ='bap'
@@ -32,7 +34,7 @@ q = "foo"
 t = "bar"
 f = "baz"
 
-
+console.log(props.position)
 props.inputChange(newQuestion, newTrueAnswer, newFalseAnswer)
 function handleq(e) {
    setnewQuestion(e.target.value)
@@ -164,7 +166,9 @@ const mapStateToProps = (state) =>{
   message: state.infoMessage.message,
   ques: state.form.newQuestion,
   tr: state.form.newTrueAnswer,
-  falsy: state.form.newFalseAnswer
+  falsy: state.form.newFalseAnswer,
+  position: state.Wheelthing.pos
+
   }
 }
   

@@ -6,39 +6,29 @@ import {connect} from 'react-redux'
 import reducer from '../state/reducer'
 
 let done =0
-let active =0
+
 export function Wheel(props) {
-  const [state, dispatch] = useReducer(reducer, initialWheelState)
-  const [active, setactive] = useState(0)
-let initial
-localStorage.setItem('finally', JSON.stringify(active))
-done= JSON.parse(localStorage.getItem('finally'))
-
-console.log(done)
-
+  const [state, dispatch] = useReducer(reducer, done)
+let initial=0
   function clock (){
   
-initial = active
+initial = done
           
         if (initial ==5){
          
          initial=0
-         
-         setactive(0)
-         localStorage.setItem('finally', JSON.stringify(active))
-         done= JSON.parse(localStorage.getItem('finally'))
-
-
+         done =0
+        
+props.moveClockwise(0)
+console.log(props.position)
       }
          
          else {
       
           initial = initial+1
-          
-          setactive(initial)
-          localStorage.setItem('finally', JSON.stringify(active))
-done = JSON.parse(localStorage.getItem('finally'))
-
+          done = done +1
+props.moveClockwise(initial)
+console.log(props.position)
          }
 
         
@@ -53,21 +43,17 @@ done = JSON.parse(localStorage.getItem('finally'))
            if (initial ==0){
             
             initial=5
+              done =5  
         
-          setactive(initial)
-           localStorage.setItem('finally', JSON.stringify(active))
-           done = JSON.parse(localStorage.getItem('finally'))
-
+props.moveCounterClockwise(initial)
             }
             
             else {
              
              initial = initial-1
-             
-      setactive(initial)
-      localStorage.setItem('finally', JSON.stringify(active))
-      done= JSON.parse(localStorage.getItem('finally'))
-
+            done = done -1
+props.moveCounterClockwise(initial)
+console.log(props.position)
             }
      
         
@@ -81,7 +67,7 @@ done = JSON.parse(localStorage.getItem('finally'))
   {
   
     [0,1,2,3,4,5].map((idx) => (
-             <><div key={idx} style={{ "--i": idx }} className={(idx === done)? 'cog active' : 'cog'}>{( idx === done   )? 'B' : ''}</div></>))    
+             <><div key={idx} style={{ "--i": idx }} className={(idx === props.position)? 'cog active' : 'cog'}>{( idx === props.position   )? 'B' : ''}</div></>))    
             
      
       
@@ -105,5 +91,4 @@ done = JSON.parse(localStorage.getItem('finally'))
   }
 
 
-export default connect(mapStateToProps,{})(Wheel)
-
+export default connect(mapStateToProps,{moveClockwise, moveCounterClockwise})(Wheel)

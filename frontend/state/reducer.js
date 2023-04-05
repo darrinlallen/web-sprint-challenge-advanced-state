@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import { moveCounterClockwise } from './action-creators'
 import { INPUT_CHANGE, MOVE_CLOCKWISE, MOVE_COUNTERCLOCKWISE, SET_INFO_MESSAGE } from './action-types'
 
-export const initialWheelState = 0
+export const initialWheelState = {pos :0}
 function Wheelthing(state = initialWheelState, action) {
 
   if (action.type == 'MOVE_CLOCKWISE'){
@@ -55,5 +55,4 @@ newFalseAnswer: action.payload3 })
     }
   
   export default combineReducers({ Wheelthing, infoMessage, form })
-  
   
