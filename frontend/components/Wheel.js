@@ -14,15 +14,21 @@ let initial=0
   
 initial = done
           
-        if (initial ==5){
+        if (initial ==5 && props.position ==5){
          
          initial=0
          done =0
         
-props.moveClockwise(1)
+props.moveClockwise(0)
 console.log(props.position)
-      }
-    
+      } 
+else if (initial ==5 ){
+
+    props.moveClockwise(1)
+    initial =0
+    done =0
+  }
+
          else {
        
           initial = initial+1
