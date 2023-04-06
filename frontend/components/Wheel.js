@@ -19,16 +19,19 @@ initial = done
          initial=0
          done =0
         
-props.moveClockwise(0)
+props.moveClockwise(1)
 console.log(props.position)
       }
-         
+    
          else {
-      
+       
           initial = initial+1
-          done = done +1
-props.moveClockwise(initial)
+
+        
+ props.moveClockwise(initial)
+done = done +1
 console.log(props.position)
+console.log(done)
          }
 
         
@@ -49,7 +52,7 @@ props.moveCounterClockwise(initial)
             }
             
             else {
-             
+                        
              initial = initial-1
             done = done -1
 props.moveCounterClockwise(initial)

@@ -256,10 +256,10 @@ describe('Advanced State Sprint Challenge Submission', () => {
     `, async () => {
       testCogs(0)
       fireEvent.click(clockwiseBtn())
-      testCogs(0)
+      testCogs(1)
       fireEvent.click(formLink())
       fireEvent.click(wheelLink())
-      testCogs(0)
+      testCogs(1)
     })
     test(`[15] The state of the quiz survives route changes:
         - Selecting an answer, navigating away and back, should keep the selected answer
